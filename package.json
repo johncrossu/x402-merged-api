@@ -1,5 +1,6 @@
 {
-  "name": "x402-merged-api",
+  "name": "johncross-data-api",
+  "description": "Pay-per-call data API by J-sey Enterprises (johncross.base.eth)",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": { "start": "node server.js" },

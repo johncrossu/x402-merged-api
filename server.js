@@ -34,7 +34,7 @@ function requirePayment(price, description) {
   };
 }
 
-app.get("/wallet-info", requirePayment("$0.001", "Base wallet balance + tx count"), async (req, res) => {
+app.get("/wallet-info", requirePayment("$0.002", "Base wallet balance + tx count"), async (req, res) => {
   const address = req.query.address;
   if (!address || !/^0x[a-fA-F0-9]{40}$/.test(address)) return res.status(400).json({ error: "Provide a valid ?address=0x..." });
   try {
@@ -58,7 +58,7 @@ app.get("/scrape", requirePayment("$0.002", "Clean text scrape of a webpage"), a
   } catch (err) { res.status(500).json({ error: "Failed to scrape page", details: String(err) }); }
 });
 
-app.get("/token-price", requirePayment("$0.001", "Live token price in USD"), async (req, res) => {
+app.get("/token-price", requirePayment("$0.002", "Live token price in USD"), async (req, res) => {
   const symbol = (req.query.symbol || "").toLowerCase();
   if (!symbol) return res.status(400).json({ error: "Provide a ?symbol=bitcoin" });
   try {
@@ -69,6 +69,6 @@ app.get("/token-price", requirePayment("$0.001", "Live token price in USD"), asy
   } catch (err) { res.status(500).json({ error: "Failed to fetch price", details: String(err) }); }
 });
 
-app.get("/", (req, res) => res.json({ status: "running", endpoints: ["/wallet-info", "/scrape", "/token-price"] }));
+app.get("/", (req, res) => res.json({ business: "J-sey Enterprises", brand: "johncross.base.eth", status: "running", endpoints: ["/wallet-info", "/scrape", "/token-price"] }));
 
 app.listen(PORT, () => console.log(`x402 API live on port ${PORT}`));
