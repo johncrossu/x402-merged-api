@@ -16,7 +16,7 @@ function requirePayment(price, description) {
     if (!paymentHeader) {
       return res.status(402).json({
         x402Version: 1,
-        accepts: [{ scheme: "exact", network: NETWORK, maxAmountRequired: price, resource: req.originalUrl, description, payTo: PAYTO_ADDRESS, asset: "USDC" }],
+        accepts: [{ scheme: "exact", network: NETWORK, maxAmountRequired: price, resource: req.originalUrl, description, payTo: PAYTO_ADDRESS, asset: "USDC", brand: "johncross.base.eth / J-sey Enterprises" }],
       });
     }
     try {
